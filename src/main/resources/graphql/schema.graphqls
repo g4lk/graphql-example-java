@@ -1,0 +1,40 @@
+scalar Date
+
+type Query {
+    speakers: [Speaker]
+    talks: [Talk]
+    talkById(id: ID!): Talk
+    talksByType(type: String!): [Talk]
+    speakerById(id: ID!): Speaker
+    speakersByCompany(company: String!): [Speaker]
+}
+
+type Mutation {
+    updateTalkDescription(id: ID!, description: String): Talk
+    updateSpeakerDescription(id: ID!, description: String): Speaker
+}
+
+type Talk {
+    id: ID!
+    name: String!
+    description: String
+    type: TypeEnum
+    speakerId: [Speaker]
+    date: Date
+
+}
+
+type Speaker {
+    id: ID!
+    name: String!
+    description: String
+    company: String
+    age: Int
+    talks: [Talk]
+}
+
+enum TypeEnum {
+    PROGRAMMING
+    HACKING
+    MOTIVATIONAL
+}
