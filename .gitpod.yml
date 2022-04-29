@@ -1,6 +1,7 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: ./mvnw install # runs during prebuild
-    command: echo 'start script'
+  - init: mvn install # runs during prebuild
+image:
+  file: .gitpod.Dockerfile
 
 
