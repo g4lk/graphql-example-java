@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +25,6 @@ public class Speaker {
     private String company;
     private int age;
 
-    @DBRef
+    @DocumentReference(lazy=true)
     private List<Talk> talks;
 }

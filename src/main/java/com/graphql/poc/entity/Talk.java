@@ -8,7 +8,7 @@ import com.graphql.poc.enumeration.TypeEnum;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +27,7 @@ public class Talk {
     private String description;
     private TypeEnum type;
 
-    @DBRef
+    @DocumentReference(lazy=true)
     private List<Speaker> speaker;
 
     private LocalDate date;
