@@ -1,6 +1,6 @@
 package com.graphql.poc.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.graphql.poc.entity.Speaker;
 
@@ -8,11 +8,11 @@ import org.bson.types.ObjectId;
 
 public interface SpeakerService {
     
-    public List<Speaker> speakers();
+    public Collection<Speaker> speakers();
 
     public Speaker speakerById(ObjectId id);
 
-    public List<Speaker> speakerByCompany(String type,String company);
+    public Collection<Speaker> speakerByCompany(String type,String company);
 
-    public List<Speaker> updateSpeakerDescription(ObjectId id, String description);
+    public Collection<Speaker> updateSpeakerDescription(ObjectId id, String description);
 }
