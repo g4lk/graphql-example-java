@@ -1,7 +1,6 @@
 package com.graphql.poc.service.impl;
 
 import java.util.Collection;
-import java.util.List;
 
 import com.graphql.poc.entity.Speaker;
 import com.graphql.poc.repository.SpeakerRepository;
@@ -10,6 +9,8 @@ import com.graphql.poc.service.SpeakerService;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
+import io.leangen.graphql.annotations.GraphQLMutation;
+import io.leangen.graphql.annotations.GraphQLNonNull;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import lombok.AllArgsConstructor;
@@ -29,21 +30,27 @@ public class DefaultSpeakerService implements SpeakerService {
     }
 
     @Override
-    public Speaker speakerById(ObjectId id) {
-        // TODO Auto-generated method stub
-        return null;
+    @GraphQLQuery
+    public Speaker speakerById(@GraphQLNonNull String id) {
+        
+        return repo.findById(new ObjectId(id)).get();
     }
 
     @Override
-    public Collection<Speaker> speakerByCompany(String type, String company) {
-        // TODO Auto-generated method stub
-        return null;
+    @GraphQLQuery
+    public Collection<Speaker> speakersByCompany(@GraphQLNonNull String company) {
+        return repo.findByCompany(company).get();
     }
 
     @Override
-    public Collection<Speaker> updateSpeakerDescription(ObjectId id, String description) {
-        // TODO Auto-generated method stub
-        return null;
+    @GraphQLMutation
+    public Speaker updateSpeakerDescription(@GraphQLNonNull String id, @GraphQLNonNull String description) {
+
+        Speaker speaker = repo.findById(new ObjectId(id)).get();
+        speaker.setDescription(description);
+        repo.save(speaker);
+
+        return speaker;
     }
     
 }
