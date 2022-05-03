@@ -9,14 +9,13 @@
 
     <body>
         <nav>
-            <a name="home" class="active"  href="#about">About</a>
-            <a name="speakers" href="#">Speakers</a>
-            <a name="talks" href="#">Talks</a>
+            <a id="home" onclick="showHome(event)" class="active"  href="#">About</a>
+            <a id="speakers" onclick="showSpeakers(event)" href="#">Speakers</a>
+            <a id="talks" onclick="showTalks(event)" href="#">Talks</a>
         </nav>
-        <div id="about-container">
-            <h1>Aplicación de prueba de graphql con Spring boot y vanilla graphql</h1>
-        </div>
+       
         <script src="script.js"></script>
+        
 </body>
 
 </html>
