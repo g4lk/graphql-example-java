@@ -1,6 +1,10 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: mvn install -DskipTests # runs during prebuild
+  - init: mvn package -DskipTests # runs during prebuild
+    command: mvn spring-boot:run
+ports:
+  - port: 8080
+    onOpen: open-preview
 image:
   file: .gitpod.Dockerfile
 
