@@ -56,7 +56,7 @@ const addSpeakers = (div) => {
         })
       };
     
-    fetch(`https://8080-g4lk-graphqlexampleja-m1qd6f9nf71.ws-eu43.gitpod.io/graphql`, options)
+    fetch(`${window.location.href}graphql`, options)
     .then(res => res.json())
     .then((responseJson) => {
         renderSpeakers(responseJson,div);
@@ -75,7 +75,7 @@ const addTalks = (div) => {
         })
       };
     
-    fetch(`https://8080-g4lk-graphqlexampleja-m1qd6f9nf71.ws-eu43.gitpod.io/graphql`, options)
+    fetch(`${window.location.href}graphql`, options)
     .then(res => res.json())
     .then((responseJson) => {
         renderTalks(responseJson,div);

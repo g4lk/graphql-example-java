@@ -27,3 +27,23 @@ body {
     color: rgb(24, 23, 23);
   }
 
+  code {
+    color: black;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;    
+  }
+
+  pre > code {
+    white-space: pre;
+    margin-top: 1.00em;
+    display: block;
+  }
+
+  pre {
+    border: 1px solid lightgray;
+  }
+
+  div {
+    padding-left: 10%;
+    padding-right:10%;
+  }
