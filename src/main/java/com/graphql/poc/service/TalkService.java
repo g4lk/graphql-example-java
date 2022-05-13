@@ -2,16 +2,17 @@ package com.graphql.poc.service;
 
 import java.util.Collection;
 
-import com.graphql.poc.entity.Talk;
+import com.graphql.poc.dto.TalkDto;
+
 
 
 public interface TalkService {
     
-    public Collection<Talk> talks();
+    public Collection<TalkDto> talks();
 
-    public Talk talkById(String id);
+    public TalkDto talkById(String id);
 
-    public Collection<Talk> talksByType(String type);
+    public Collection<TalkDto> talksByType(String type);
 
-    public Talk updateTalkDescription(String id, String description);
+    public TalkDto updateTalkDescription(String id, String description);
 }

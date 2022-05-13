@@ -2,16 +2,16 @@ package com.graphql.poc.service;
 
 import java.util.Collection;
 
-import com.graphql.poc.entity.Speaker;
+import com.graphql.poc.dto.SpeakerDto;
 
 
 public interface SpeakerService {
     
-    public Collection<Speaker> speakers();
+    public Collection<SpeakerDto> speakers();
 
-    public Speaker speakerById(String id);
+    public SpeakerDto speakerById(String id);
 
-    public Collection<Speaker> speakersByCompany(String company);
+    public Collection<SpeakerDto> speakersByCompany(String company);
 
-    public Speaker updateSpeakerDescription(String id, String description);
+    public SpeakerDto updateSpeakerDescription(String id, String description);
 }

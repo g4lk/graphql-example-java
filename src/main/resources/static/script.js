@@ -83,7 +83,7 @@ const addTalks = (div) => {
 }
 
 const getTalksQuery = () => `{ talks { name description type speaker { name }} }`;
-const getSpeakersQuery = () => `{ speakers { name description talks { name }} }`;
+const getSpeakersQuery = () => `{ speakers { id name description talks { name }} }`;
 
 const removeContainer = () => {
     const boxes = document.querySelectorAll('div');
