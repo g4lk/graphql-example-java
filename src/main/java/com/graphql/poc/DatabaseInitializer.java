@@ -31,10 +31,10 @@ public class DatabaseInitializer {
 	}
 
     private void saveData() {
-        Speaker speaker1 = new Speaker(new ObjectId(), "Speaker de hacking", "Increible speaker", "MAPFREN'T", 17, null);
-        Speaker speaker2 = new Speaker(new ObjectId(), "David Parla", "Increible speaker 2", "MAPFREN'T", 18, null);
-        Talk talk = new Talk(new ObjectId(), "Charla de HACKING", "hack the world", TypeEnum.HACKING, null, LocalDate.now() );
-        Talk talk2 = new Talk(new ObjectId(), "Charla de PROGRAMMING", "program the world", TypeEnum.PROGRAMMING, null, LocalDate.now() );
+        Speaker speaker1 = new Speaker(1, "Speaker de hacking", "Increible speaker", "MAPFREN'T", 17, null);
+        Speaker speaker2 = new Speaker(2, "David Parla", "Increible speaker 2", "MAPFREN'T", 18, null);
+        Talk talk = new Talk(1, "Charla de HACKING", "hack the world", TypeEnum.HACKING, null, LocalDate.now() );
+        Talk talk2 = new Talk(2, "Charla de PROGRAMMING", "program the world", TypeEnum.PROGRAMMING, null, LocalDate.now() );
 
         talk.setSpeaker(List.of(speaker1,speaker2));
         talk2.setSpeaker(List.of(speaker2));

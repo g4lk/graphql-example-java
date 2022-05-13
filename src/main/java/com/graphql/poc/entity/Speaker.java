@@ -20,7 +20,7 @@ import lombok.Setter;
 public class Speaker {
     
     @Id
-    private ObjectId id;
+    private Integer id;
     private String name;
     private String description;
     private String company;
