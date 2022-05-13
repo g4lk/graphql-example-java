@@ -1,9 +1,7 @@
 package com.graphql.poc.service.impl;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
-import com.graphql.poc.dto.TalkDto;
 import com.graphql.poc.entity.Talk;
 import com.graphql.poc.repository.TalkRepository;
 import com.graphql.poc.service.TalkService;
@@ -26,33 +24,33 @@ public class DefaultTalkService implements TalkService {
 
     @Override
     @GraphQLQuery
-    public Collection<TalkDto> talks() {
+    public Collection<Talk> talks() {
         
-        return repo.findAll().stream().map(TalkDto::new).collect(Collectors.toList());
+        return repo.findAll();
     }
 
     @Override
     @GraphQLQuery
-    public TalkDto talkById(@GraphQLNonNull String id) {
+    public Talk talkById(@GraphQLNonNull String id) {
         
-        return new TalkDto(repo.findById(new ObjectId(id)).get());
+        return repo.findById(new ObjectId(id)).get();
     }
 
     @Override
     @GraphQLQuery
-    public Collection<TalkDto> talksByType(@GraphQLNonNull String type) {
+    public Collection<Talk> talksByType(@GraphQLNonNull String type) {
         
-        return repo.findByType(type).get().stream().map(TalkDto::new).collect(Collectors.toList());
+        return repo.findByType(type).get();
     }
 
     @Override
     @GraphQLMutation
-    public TalkDto updateTalkDescription(String id, String description) {
+    public Talk updateTalkDescription(String id, String description) {
         Talk talk = repo.findById(new ObjectId(id)).get();
         talk.setDescription(description);
         repo.save(talk);
 
-        return new TalkDto(talk);
+        return talk;
     }
     
 }

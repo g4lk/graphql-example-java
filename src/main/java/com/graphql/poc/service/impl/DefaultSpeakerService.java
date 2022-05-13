@@ -1,9 +1,7 @@
 package com.graphql.poc.service.impl;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
-import com.graphql.poc.dto.SpeakerDto;
 import com.graphql.poc.entity.Speaker;
 import com.graphql.poc.repository.SpeakerRepository;
 import com.graphql.poc.service.SpeakerService;
@@ -26,33 +24,33 @@ public class DefaultSpeakerService implements SpeakerService {
 
     @Override
     @GraphQLQuery
-    public Collection<SpeakerDto> speakers() {
+    public Collection<Speaker> speakers() {
         
-        return repo.findAll().stream().map(SpeakerDto::new).collect(Collectors.toList());
+        return repo.findAll();
     }
 
     @Override
     @GraphQLQuery
-    public SpeakerDto speakerById(@GraphQLNonNull String id) {
+    public Speaker speakerById(@GraphQLNonNull String id) {
         
-        return new SpeakerDto(repo.findById(new ObjectId(id)).get());
+        return repo.findById(new ObjectId(id)).get();
     }
 
     @Override
     @GraphQLQuery
-    public Collection<SpeakerDto> speakersByCompany(@GraphQLNonNull String company) {
-        return repo.findByCompany(company).get().stream().map(SpeakerDto::new).collect(Collectors.toList());
+    public Collection<Speaker> speakersByCompany(@GraphQLNonNull String company) {
+        return repo.findByCompany(company).get();
     }
 
     @Override
     @GraphQLMutation
-    public SpeakerDto updateSpeakerDescription(@GraphQLNonNull String id, @GraphQLNonNull String description) {
+    public Speaker updateSpeakerDescription(@GraphQLNonNull String id, @GraphQLNonNull String description) {
 
         Speaker speaker = repo.findById(new ObjectId(id)).get();
         speaker.setDescription(description);
         repo.save(speaker);
 
-        return new SpeakerDto(speaker);
+        return speaker;
     }
     
 }
